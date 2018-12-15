@@ -16,19 +16,19 @@ exports.run = async (browser) => {
   // implement here
   // this is sample
   const page = await browser.newPage();
-  await page.goto('https://www.google.co.jp',
+  await page.goto('https://www.google.com',
    {waitUntil: ['domcontentloaded', 'networkidle0']}
   );
   console.log((await page.content()).slice(0, 500));
 
-  await page.type('#lst-ib', 'aaaaa');
-  // avoid to timeout waitForNavigation() after click()
-  await Promise.all([
-    // avoid to
-    // 'Cannot find context with specified id undefined' for localStorage
-    page.waitForNavigation(),
-    page.click('[name=btnK]'),
-  ]);
+  // await page.type('#lst-ib', 'aaaaa');
+  // // avoid to timeout waitForNavigation() after click()
+  // await Promise.all([
+  //   // avoid to
+  //   // 'Cannot find context with specified id undefined' for localStorage
+  //   page.waitForNavigation(),
+  //   page.click('[name=btnK]'),
+  // ]);
 
 /* screenshot
   await page.screenshot({path: '/tmp/screenshot.png'});
@@ -49,12 +49,12 @@ exports.run = async (browser) => {
 */
 
   // cookie and localStorage
-  await page.setCookie({name: 'name', value: 'cookieValue'});
-  console.log(await page.cookies());
-  console.log(await page.evaluate(() => {
-    localStorage.setItem('name', 'localStorageValue');
-    return localStorage.getItem('name');
-  }));
+  // await page.setCookie({name: 'name', value: 'cookieValue'});
+  // console.log(await page.cookies());
+  // console.log(await page.evaluate(() => {
+  //   localStorage.setItem('name', 'localStorageValue');
+  //   return localStorage.getItem('name');
+  // }));
   await page.close();
   return 'done';
 };
