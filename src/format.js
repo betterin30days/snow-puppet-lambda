@@ -1,3 +1,3 @@
-exports.report = (runs, lifts, acres) => {
-  return {runs, lifts, acres};
+exports.report = (name, runs, lifts, acres) => {
+  return {name, runs, lifts, acres};
 };
